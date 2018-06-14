@@ -2,22 +2,25 @@
 
 node {
   stage('Validate') {
-      println "SHOULD VALIDATE"
+    assert env['releaseVersion'] ==~ /^\d+.\d+.\d+$/: 'releaseVersion not formatted correctly'
   }
-  stage('Checkout') {
-      checkout([
-            $class                           : 'GitSCM',
-            branches                         : [[name: '*/master']],
-            doGenerateSubmoduleConfigurations: scm.doGenerateSubmoduleConfigurations,
-            extensions                       : scm.extensions,
-            userRemoteConfigs                : scm.userRemoteConfigs
-    ])
-  }
-  stage('Update Versions') {
-      println 'update version'
-  }
-
   stage('Tag Release') {
-    println 'tag release'
+    stage('Checkout') {
+      checkout([
+              $class                           : 'GitSCM',
+              branches                         : [[name: '*/develop']],
+              doGenerateSubmoduleConfigurations: scm.doGenerateSubmoduleConfigurations,
+              extensions                       : scm.extensions,
+              userRemoteConfigs                : [
+                      [
+                              credentialsId: 'm4rkmckenna-ssh',
+                              url          : 'git@github.com:m4rkmckenna/jenkins-release-test.git'
+                      ]
+              ]
+      ])
+    }
+    stage('Update Versions') {
+      sh 'env | sort'
+    }
   }
 }
