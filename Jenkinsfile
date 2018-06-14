@@ -21,7 +21,14 @@ node {
     }
     stage('Update Versions') {
       sh "echo ${releaseVersion} > version.txt"
-      
+      sshagent(['m4rkmckenna-ssh']) {
+        sh("""
+        git add -u
+        git commit -m \"Release :: ${releaseVersion}\"
+        git tag -a ${releaseVersion} -m \"Release :: ${releaseVersion}\"
+        git push origin ${releaseVersion}
+        """)
+      }
     }
   }
 }
