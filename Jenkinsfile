@@ -20,7 +20,7 @@ node {
       ])
     }
     stage('Update Versions') {
-      sh 'env | sort'
+      sh "echo ${releaseVersion} > version.txt"
     }
   }
 }
