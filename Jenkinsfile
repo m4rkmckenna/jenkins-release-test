@@ -21,6 +21,7 @@ node {
     }
     stage('Update Versions') {
       sh "echo ${releaseVersion} > version.txt"
+      
     }
   }
 }
