@@ -14,3 +14,4 @@ echo "${releaseVersion}_1" > version.txt
 git add -u
 git commit -m "Pre-Relese Version :: ${releaseVersion}_1"
 git push origin develop master ${releaseVersion}
+
