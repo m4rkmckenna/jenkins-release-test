@@ -24,14 +24,7 @@ node {
     }
     stage('Tag & Push') {
       sshagent(['m4rkmckenna-ssh']) {
-        sh("""
-        git config user.email "engineering@oroson.co.uk"
-        git config user.name "Oroson Engineering"
-        git add -u
-        git commit -m \"Release :: ${releaseVersion}\"
-        git tag -a ${releaseVersion} -m \"Release :: ${releaseVersion}\"
-        git push origin ${releaseVersion}
-        """)
+        sh('./tagRelease.sh')
       }
     }
   }
