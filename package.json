@@ -1,0 +1,19 @@
+{
+  "name": "jenkins-release-test",
+  "version": "1.0.0",
+  "description": "Jenkins Release Test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m4rkmckenna/jenkins-release-test.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/m4rkmckenna/jenkins-release-test/issues"
+  },
+  "homepage": "https://github.com/m4rkmckenna/jenkins-release-test#readme"
+}
