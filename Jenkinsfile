@@ -29,7 +29,7 @@ node {
       env.releaseVersion = sh(returnStdout: true, script: "semver ${env.currentVersion} --increment minor").trim()
     }
     env.nextVersion = sh(returnStdout: true, script: "semver ${env.releaseVersion} --increment preminor --preid devlop").trim()
-    println("\n\tRelease Version\t:: [${env.releaseVersion}]\n\tNext Version\t:: [${env.nextVersion}]\n")
+    println("\n\tCurrent Version\t:: [${env.currentVersion}]\n\tRelease Version\t:: [${env.releaseVersion}]\n\tNext Version\t:: [${env.nextVersion}]\n")
   }
 
   stage('Update Versions & Tag') {
